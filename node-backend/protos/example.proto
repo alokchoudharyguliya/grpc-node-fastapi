@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package example;
+
+service ExampleService {
+  // Simple string message exchange
+  rpc SayHello(HelloRequest) returns (HelloResponse);
+  
+  // Send image data for processing
+  rpc ProcessImage(ImageRequest) returns (ImageResponse);
+}
+
+message HelloRequest {
+  string name = 1;
+  string message = 2;
+}
+
+message HelloResponse {
+  string reply = 1;
+  string timestamp = 2;
+}
+
+message ImageRequest {
+  bytes image_data = 1;
+  string image_name = 2;
+  string context = 3;
+}
+
+message ImageResponse {
+  string result = 1;
+  bool success = 2;
+  double processing_time = 3;
+}
